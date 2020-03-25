@@ -88,3 +88,64 @@ print(gen_list)
 
 위와 같이 간단한 조건은 lambda 또는 generator 표현방식으로 간단하게 구현이 가능하다.
 
+## collections.Counter
+
+collections 모듈의 Counter 클래스는 중복값을 카운팅해주는 로직을 직접 구현하지 않고 쉽게 사용할 수 있도록 도와준다.
+
+```python
+from collections import Counter
+
+def countLetters(word):
+    counter = {}
+    for letter in word:
+        if letter not in counter:
+            counter[letter] = 0
+        counter[letter] += 1
+    return counter
+
+print(countLetters('hello world'))
+# out = {'h': 1, 'e': 1, 'l': 3, 'o': 2, ' ': 1, 'w': 1, 'r': 1, 'd': 1}
+print(Counter('hello world'))
+# out = {'h': 1, 'e': 1, 'l': 3, 'o': 2, ' ': 1, 'w': 1, 'r': 1, 'd': 1}
+print(Counter('hello world').most_common())
+# out = [('l', 3), ('o', 2), ('h', 1), ('e', 1), (' ', 1), ('w', 1), ('r', 1), ('d', 1)]
+print(Counter('hello world').most_common(2))
+# out = [('l', 3), ('o', 2)]
+```
+
+collections 모듈은 별도의 설치없이 설치가 가능하며 위의 countLetters 함수의 기능을 Counter 클래스만으로 동일하게 수행할 수 있다.
+
+또한 dict type으로 카운팅이 완료 된 후 most_common() 함수를 사용하면 높은 순으로 정렬되며 매개변수로 숫자를 주게 되면 원하는 만큼의 순위를 자를수 있게 된다.
+
+## list()
+
+파이썬 객체인 리스트를 만듭니다.
+
+매개변수로 iterable(반복가능한) 변수를 넣으면 해당 변수를 list형태로 변환해서 리턴해줍니다.
+
+```python
+# empty list
+print(list())
+
+# vowel string
+vowel_string = 'aeiou'
+print(list(vowel_string))
+
+# vowel tuple
+vowel_tuple = ('a', 'e', 'i', 'o', 'u')
+print(list(vowel_tuple))
+
+# vowel list
+vowel_list = ['a', 'e', 'i', 'o', 'u']
+print(list(vowel_list))
+```
+
+###### result
+
+```
+[]
+['a', 'e', 'i', 'o', 'u']
+['a', 'e', 'i', 'o', 'u']
+['a', 'e', 'i', 'o', 'u']
+```
+
